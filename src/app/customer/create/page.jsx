@@ -45,7 +45,7 @@ const CustomerForm = () => {
                 placeholder="Customer Surname"
             />
             <button type="submit" className="bg-green-600 font-bold text-white py-3 px-6 w-fit">
-                Add Customer
+                Create Customer
             </button>
         </form>
     );

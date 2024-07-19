@@ -46,17 +46,17 @@ const Sidebar = () => {
                      </MenuItem>
                      <MenuItem
                          component={Link}
-                         href="/movement"
-                         className={`${pathname === '/movement' ? 'bg-selected-light dark:bg-selected-dark' : ''} m-4 my-2 py-2 rounded-xl flex justify-between`}>
-                         {resolvedTheme === 'light' ? (<TbTransfer style={{color: "black"}}  />) : (<TbTransfer/>)}
-                         <ListItemText primary="Movements" className="ml-2 text-light dark:text-dark" />
+                         href="/account"
+                         className={`${pathname === '/account' ? 'bg-selected-light dark:bg-selected-dark' : ''} m-4 my-2 py-2 rounded-xl flex justify-between`}>
+                         {resolvedTheme === 'light' ? (<TbAccessible style={{color: "black"}}  />) : (<TbAccessible/>)}
+                         <ListItemText primary="Account" className="ml-2 text-light dark:text-dark" />
                      </MenuItem>
                      <MenuItem
                          component={Link}
-                         href="/apple"
-                         className={`${pathname === '/apple' ? 'bg-selected-light dark:bg-selected-dark' : ''} m-4 my-2 py-2 rounded-xl flex justify-between`}>
-                         {resolvedTheme === 'light' ? (<TbAccessible style={{color: "black"}}  />) : (<TbAccessible/>)}
-                         <ListItemText primary="Apple" className="ml-2 text-light dark:text-dark" />
+                         href="/transaction"
+                         className={`${pathname === '/transaction' ? 'bg-selected-light dark:bg-selected-dark' : ''} m-4 my-2 py-2 rounded-xl flex justify-between`}>
+                         {resolvedTheme === 'light' ? (<TbTransfer style={{color: "black"}}  />) : (<TbTransfer/>)}
+                         <ListItemText primary="Transaction" className="ml-2 text-light dark:text-dark" />
                      </MenuItem>
                 </List>
             </div>

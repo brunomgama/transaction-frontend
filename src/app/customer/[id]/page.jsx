@@ -12,7 +12,7 @@ const CustomerForm = ({ params }) => {
     const router = useRouter();
     const paramId = params.id;
 
-    const { data, isLoading, isSuccess} = useCustomer(params.id)
+    const { data, isLoading, isSuccess} = useCustomer(paramId)
 
     useEffect(() => {
         if(isSuccess) {
@@ -63,7 +63,7 @@ const CustomerForm = ({ params }) => {
                         placeholder="Value"
                     />
                     <button type="submit" className="bg-green-600 font-bold text-white py-3 px-6 w-fit">
-                        Add customer
+                        Edit customer
                     </button>
                 </form>
             )}
