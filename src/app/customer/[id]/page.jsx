@@ -47,26 +47,30 @@ const CustomerForm = ({ params }) => {
                     Loading
                 </div>
             ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+            <div className="flex items-center justify-center">
+                <form
+                    onSubmit={handleSubmit}
+                    className="flex flex-col gap-3 w-full mx-auto p-6 bg-gray-700 bg-opacity-50 rounded-lg">
                     <input
                         onChange={(e) => setName(e.target.value)}
                         value={name}
-                        className="border border-slate-500 px-8 py-2"
+                        className="border border-slate-500 px-8 py-2 text-light dark:text-dark"
                         type="text"
-                        placeholder="Bank Name"
+                        placeholder="Customer Name"
                     />
                     <input
                         onChange={(e) => setSurname(e.target.value)}
                         value={surname}
-                        className="border border-slate-500 px-8 py-2"
+                        className="border border-slate-500 px-8 py-2 text-light dark:text-dark"
                         type="text"
-                        placeholder="Value"
+                        placeholder="Customer Surname"
                     />
-                    <button type="submit" className="bg-green-600 font-bold text-white py-3 px-6 w-fit">
-                        Edit customer
+                    <button type="submit" className="bg-debit rounded font-bold text-white py-3 px-6 w-fit">
+                        Edit Customer
                     </button>
                 </form>
-            )}
+            </div>
+        )}
         </>
     );
 };

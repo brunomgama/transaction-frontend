@@ -35,7 +35,7 @@ const TransactionForm = ({ params }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!accountId || !isDebit || !amount) {
+        if (!accountId || amount <= 0 || isDebit === null || isDebit === undefined) {
             alert("Data is missing");
             return;
         }
@@ -50,32 +50,37 @@ const TransactionForm = ({ params }) => {
                     Loading
                 </div>
             ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+            <div className="flex items-center justify-center">
+                <form
+                    onSubmit={handleSubmit}
+                    className="flex flex-col gap-3 w-full mx-auto p-6 bg-gray-700 bg-opacity-50 rounded-lg">
                     <input
                         onChange={(e) => setAccountId(e.target.value)}
                         value={accountId}
-                        className="border border-slate-500 px-8 py-2"
+                        className="border border-slate-500 px-8 py-2 text-light dark:text-dark"
                         type="number"
-                        placeholder="Account"
+                        placeholder="Account ID"
                     />
-                    <input
-                        onChange={(e) => setDebit(e.target.value)}
+                    <select
+                        onChange={(e) => setDebit(e.target.value === 'true')}
                         value={isDebit}
-                        className="border border-slate-500 px-8 py-2"
-                        type="text"
-                        placeholder="Type"
-                    />
+                        className="border border-slate-500 px-8 py-2 text-light dark:text-dark"
+                    >
+                        <option value="true">Debit</option>
+                        <option value="false">Credit</option>
+                    </select>
                     <input
                         onChange={(e) => setAmount(e.target.value)}
                         value={amount}
-                        className="border border-slate-500 px-8 py-2"
+                        className="border border-slate-500 px-8 py-2 text-light dark:text-dark"
                         type="number"
                         placeholder="Amount"
                     />
-                    <button type="submit" className="bg-green-600 font-bold text-white py-3 px-6 w-fit">
-                        Update transaction
+                    <button type="submit" className="bg-debit rounded font-bold text-white py-3 px-6 w-fit">
+                        Create Transaction
                     </button>
                 </form>
+            </div>
         )}
         </>
     );

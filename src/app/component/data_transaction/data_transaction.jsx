@@ -2,18 +2,14 @@
 
 import { TbEdit, TbCreditCardOff, TbSquarePlus } from "react-icons/tb";
 import { useRouter } from "next/navigation";
-import useCustomerList from "../../../libs/customer/useCustomerList";
-import useDeleteCustomer from "../../../libs/customer/useDeleteCustomer";
-import useDeleteAccount from "../../../libs/account/useDeleteAccount";
-import useAccountList from "../../../libs/account/useAccountList";
 import useDeleteTransaction from "../../../libs/transaction/useDeleteTransaction";
 import useTransactionList from "../../../libs/transaction/useTransactionList";
 
 const DataTransaction = ({ list }) => {
     const router = useRouter();
-    const deleteTransaction = useDeleteTransaction()
+    const deleteTransaction = useDeleteTransaction();
 
-    const { data, isLoading } = useTransactionList()
+    const { data, isLoading } = useTransactionList();
 
     const handleEditClick = (id) => {
         router.push(`/transaction/${id}`);
@@ -24,7 +20,7 @@ const DataTransaction = ({ list }) => {
     };
 
     const handleDeleteClick = (id) => {
-        deleteTransaction.mutate(id)
+        deleteTransaction.mutate(id);
     };
 
     return (
@@ -37,54 +33,57 @@ const DataTransaction = ({ list }) => {
                     <TbSquarePlus className="text-xl ml-2" />
                 </button>
             </div>
-            {isLoading?(
-                <div>
-                    Loading
-                </div>
-            ): (
+            {isLoading ? (
+                <div>Loading</div>
+            ) : (
                 <table className="w-full text-sm text-light dark:text-dark">
-                <thead className="text-xs uppercase bg-over-light dark:bg-over-dark text-light dark:text-dark">
-                <tr>
-                    {list.map((t) => (
-                        <th key={t.label} scope="col" className="px-6 py-3 text-left">
-                            {t.label}
-                        </th>
-                    ))}
-                </tr>
-                </thead>
-                <tbody>
-                {data.map((t) => (
-                    <tr key={t.id}
-                        className="bg-over-light dark:bg-over-dark text-light dark:text-dark hover:bg-selected-light dark:hover:bg-selected-dark">
-                        <th scope="row" className="py-4 font-medium whitespace-nowrap text-left">
-                            <div className="flex">
-                                {t.id}
-                            </div>
-                        </th>
-                        <td className="px-6 py-4 text-left">
-                            {t.accountId}
-                        </td>
-                        <td className="px-6 py-4 text-left">
-                            {t.isDebit}
-                        </td>
-                        <td className="px-6 py-4 text-left">
-                            {t.amount} €
-                        </td>
-                        <td className="py-4 text-left">
-                            <div className="flex">
-                                <button
-                                    className="p-2 rounded mx-4 bg-over-light dark:bg-over-dark text-light dark:text-dark hover:bg-selected-light dark:hover:bg-selected-dark">
-                                    <TbEdit className="text-xl" onClick={() => handleEditClick(t.id)}/>
-                                </button>
-                                <button
-                                    className="p-2 rounded bg-over-light dark:bg-over-dark text-light dark:text-dark hover:bg-selected-light dark:hover:bg-selected-dark">
-                                    <TbCreditCardOff className="text-xl" onClick={() => handleDeleteClick(t.id)}/>
-                                </button>
-                            </div>
-                        </td>
+                    <thead className="text-xs uppercase bg-over-light dark:bg-over-dark text-light dark:text-dark">
+                    <tr>
+                        {list.map((t) => (
+                            <th key={t.label} scope="col" className="px-6 py-3 text-left">
+                                {t.label}
+                            </th>
+                        ))}
                     </tr>
-                ))}
-                </tbody>
+                    </thead>
+                    <tbody>
+                    {data.map((t) => (
+                        <tr key={t.id}
+                            className="bg-over-light dark:bg-over-dark text-light dark:text-dark hover:bg-selected-light dark:hover:bg-selected-dark">
+                            <th scope="row" className="py-4 font-medium whitespace-nowrap text-left">
+                                <div className="flex px-6 py-3 text-left">
+                                    {t.id}
+                                </div>
+                            </th>
+                            <td className="px-6 py-4 text-left">
+                                {t.accountId}
+                            </td>
+                            <td className="px-6 py-4 text-left">
+                                    <span
+                                        className={`inline-block px-3 py-1 rounded-full text-white ${t.isDebit ? 'bg-debit' : 'bg-credit'}`}>
+                                        {t.isDebit ? 'Debit' : 'Credit'}
+                                    </span>
+                            </td>
+                            <td className="px-6 py-4 text-left">
+                                {t.isDebit ? '+' : '-'} {t.amount} €
+                            </td>
+                            <td className="py-4 text-left">
+                                <div className="flex">
+                                    <button
+                                        className="p-2 rounded mx-4 bg-over-light dark:bg-over-dark text-light dark:text-dark hover:bg-selected-light dark:hover:bg-selected-dark"
+                                        onClick={() => handleEditClick(t.id)}>
+                                        <TbEdit className="text-xl"/>
+                                    </button>
+                                    <button
+                                        className="p-2 rounded bg-over-light dark:bg-over-dark text-light dark:text-dark hover:bg-selected-light dark:hover:bg-selected-dark"
+                                        onClick={() => handleDeleteClick(t.id)}>
+                                        <TbCreditCardOff className="text-xl"/>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    ))}
+                    </tbody>
                 </table>
             )}
         </div>

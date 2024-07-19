@@ -53,7 +53,7 @@ const DataCustomer = ({ list }) => {
                     <tr key={t.id}
                         className="bg-over-light dark:bg-over-dark text-light dark:text-dark hover:bg-selected-light dark:hover:bg-selected-dark">
                         <th scope="row" className="py-4 font-medium whitespace-nowrap text-left">
-                            <div className="flex">
+                            <div className="flex px-6 py-3 text-left">
                                 {t.id}
                             </div>
                         </th>
@@ -66,12 +66,14 @@ const DataCustomer = ({ list }) => {
                         <td className="py-4 text-left">
                             <div className="flex">
                                 <button
-                                    className="p-2 rounded mx-4 bg-over-light dark:bg-over-dark text-light dark:text-dark hover:bg-selected-light dark:hover:bg-selected-dark">
-                                    <TbEdit className="text-xl" onClick={() => handleEditClick(t.id)}/>
+                                    className="p-2 rounded mx-4 bg-over-light dark:bg-over-dark text-light dark:text-dark hover:bg-selected-light dark:hover:bg-selected-dark"
+                                    onClick={() => handleEditClick(t.id)}>
+                                    <TbEdit className="text-xl"/>
                                 </button>
                                 <button
-                                    className="p-2 rounded bg-over-light dark:bg-over-dark text-light dark:text-dark hover:bg-selected-light dark:hover:bg-selected-dark">
-                                    <TbCreditCardOff className="text-xl" onClick={() => handleDeleteClick(t.id)}/>
+                                    className="p-2 rounded bg-over-light dark:bg-over-dark text-light dark:text-dark hover:bg-selected-light dark:hover:bg-selected-dark"
+                                    onClick={() => handleDeleteClick(t.id)}>
+                                    <TbCreditCardOff className="text-xl" />
                                 </button>
                             </div>
                         </td>
