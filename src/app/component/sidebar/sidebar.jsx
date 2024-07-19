@@ -3,8 +3,8 @@
 import {usePathname} from "next/navigation";
 import {useTheme} from "next-themes";
 import Link from "next/link";
-import {List, ListItem, ListItemText, MenuItem} from "@mui/material";
-import {TbHome, TbTransfer, TbAccessible, TbWallet} from "react-icons/tb";
+import { List, ListItem, ListItemText, MenuItem } from "@mui/material";
+import { TbHome, TbTransfer, TbAccessible, TbWallet } from "react-icons/tb";
 import ThemeSwitch from "@/app/ThemeSwitch";
 import React from "react";
 
@@ -13,7 +13,7 @@ const Sidebar = () => {
     const { resolvedTheme } = useTheme();
 
     return (
-        <div className="h-screen bg-over-light dark:bg-over-dark">
+        <div className="h-full min-h-screen bg-over-light dark:bg-over-dark">
             <Link className="flex justify-between px-6 py-4 text-xl font-bold" href="/">
                 <h1 className="text-light dark:text-dark">My Finances</h1>
             </Link>
@@ -39,10 +39,10 @@ const Sidebar = () => {
                     </ListItem>
                     <MenuItem
                         component={Link}
-                        href="/bank"
-                        className={`${pathname === '/bank' ? 'bg-selected-light dark:bg-selected-dark' : ''} m-4 my-2 py-2 rounded-xl flex justify-between`}>
+                        href="/customer"
+                        className={`${pathname === '/customer' ? 'bg-selected-light dark:bg-selected-dark' : ''} m-4 my-2 py-2 rounded-xl flex justify-between`}>
                         {resolvedTheme === 'light' ? (<TbWallet style={{color: "black"}}  />) : (<TbWallet/>)}
-                         <ListItemText primary="Bank" className="ml-2 text-light dark:text-dark" />
+                         <ListItemText primary="Customer" className="ml-2 text-light dark:text-dark" />
                      </MenuItem>
                      <MenuItem
                          component={Link}

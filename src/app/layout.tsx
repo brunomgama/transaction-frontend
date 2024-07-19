@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
       <Providers>
         <Background>
-          <div className="flex">
+          <div className="h-full flex">
             <div className="w-1/5">
               <Sidebar />
             </div>

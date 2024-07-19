@@ -1,12 +1,7 @@
-import ThemeSwitch from "@/app/ThemeSwitch";
-
-export default function Home() {
-
+export default async function Home() {
     return (
         <div>
-            <div className="flex justify-center">
-                hello
-            </div>
+            Test Home
         </div>
     );
 }
