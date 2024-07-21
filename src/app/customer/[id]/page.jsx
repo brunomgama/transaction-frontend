@@ -77,7 +77,7 @@ const CustomerForm = ({ params }) => {
                         className="border border-slate-500 px-8 py-2 text-light dark:text-dark"
                         type="text"
                     />
-                    <button type="submit" className="bg-debit rounded font-bold text-white py-3 px-6 w-fit">
+                    <button type="submit" className="bg-selected-light dark:bg-selected-dark rounded font-bold text-white py-3 px-6 w-fit">
                         Edit Customer
                     </button>
                 </form>

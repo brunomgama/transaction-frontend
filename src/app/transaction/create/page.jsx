@@ -63,7 +63,7 @@ const TransactionForm = () => {
                     type="number"
                     placeholder="None"
                 />
-                <button type="submit" className="bg-debit rounded font-bold text-white py-3 px-6 w-fit">
+                <button type="submit" className="bg-selected-light dark:bg-selected-dark rounded font-bold text-white py-3 px-6 w-fit">
                     Create Transaction
                 </button>
             </form>

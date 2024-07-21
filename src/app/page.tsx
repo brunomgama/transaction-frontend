@@ -10,7 +10,7 @@ export default function Home() {
                 <Card label={"Transaction"} redirection={"/transaction/create"}/>
             </div>
             <div>
-                <HandleOverview />
+                <HandleOverview/>
             </div>
         </div>
     );

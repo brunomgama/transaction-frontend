@@ -12,8 +12,11 @@ const HandleOverview = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        router.push(`/overview/${customerId}`);
-        router.refresh();
+
+        if(customerId !== 0) {
+            router.push(`/overview/${customerId}`);
+            router.refresh();
+        }
     };
 
     return (
@@ -54,7 +57,7 @@ const HandleOverview = () => {
                                 </option>
                             ))}
                         </select>
-                        <button type="submit" className="bg-debit rounded font-bold text-white py-3 px-6 w-fit">
+                        <button type="submit" className="bg-selected-light dark:bg-selected-dark rounded font-bold text-white py-3 px-6 w-fit">
                             Check Global Overview
                         </button>
                     </form>

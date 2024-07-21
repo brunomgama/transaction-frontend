@@ -77,7 +77,7 @@ const DataTransaction = ({ list }) => {
                                     </span>
                             </td>
                             <td className="px-6 py-4 text-left">
-                                {t.isDebit ? '+' : '-'} {t.amount} €
+                                {t.isDebit ? '-' : '+'} {t.amount} €
                             </td>
                             <td className="py-4 text-left">
                                 <div className="flex">

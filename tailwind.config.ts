@@ -22,8 +22,8 @@ const config: Config = {
         'over-dark': '#393E46',
         'selected-dark': '#B4846C',
 
-        'debit': '#508D4E',
-        'credit': '#E76F51',
+        'credit': '#508D4E',
+        'debit': '#E76F51',
       },
       textColor: {
         'light': '#222831',
