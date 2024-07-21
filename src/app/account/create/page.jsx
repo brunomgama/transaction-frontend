@@ -40,19 +40,23 @@ const AccountForm = () => {
             <form
                 onSubmit={handleSubmit}
                 className="flex flex-col gap-3 w-full mx-auto p-6 bg-gray-700 bg-opacity-50 rounded-lg">
+                <label htmlFor="email" className="block mt-2 text-sm font-medium text-light dark:text-dark">Customer
+                    ID</label>
                 <input
                     onChange={(e) => setCustomerId(e.target.value)}
                     value={customerId}
                     className="border border-slate-500 px-8 py-2 text-light dark:text-dark"
                     type="number"
-                    placeholder="Customer ID"
+                    placeholder="None"
                 />
+                <label htmlFor="email"
+                       className="block mt-2 text-sm font-medium text-light dark:text-dark">Balance</label>
                 <input
                     onChange={(e) => setBalance(e.target.value)}
                     value={balance}
                     className="border border-slate-500 px-8 py-2 text-light dark:text-dark"
                     type="number"
-                    placeholder="Balance"
+                    placeholder="None"
                 />
                 <button type="submit" className="bg-debit rounded font-bold text-white py-3 px-6 w-fit">
                     Create Account

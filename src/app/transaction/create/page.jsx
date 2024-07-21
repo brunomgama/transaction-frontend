@@ -35,13 +35,17 @@ const TransactionForm = () => {
             <form
                 onSubmit={handleSubmit}
                 className="flex flex-col gap-3 w-full mx-auto p-6 bg-gray-700 bg-opacity-50 rounded-lg">
+                <label htmlFor="email" className="block mt-2 text-sm font-medium text-light dark:text-dark">Account
+                    ID</label>
                 <input
                     onChange={(e) => setAccountId(e.target.value)}
                     value={accountId}
                     className="border border-slate-500 px-8 py-2 text-light dark:text-dark"
                     type="number"
-                    placeholder="Account ID"
+                    placeholder="None"
                 />
+                <label htmlFor="email"
+                       className="block mb-2 text-sm font-medium text-light dark:text-dark">Type</label>
                 <select
                     onChange={(e) => setDebit(e.target.value === 'true')}
                     value={isDebit}
@@ -50,12 +54,14 @@ const TransactionForm = () => {
                     <option value="true">Debit</option>
                     <option value="false">Credit</option>
                 </select>
+                <label htmlFor="email"
+                       className="block mb-2 text-sm font-medium text-light dark:text-dark">Amount</label>
                 <input
                     onChange={(e) => setAmount(e.target.value)}
                     value={amount}
                     className="border border-slate-500 px-8 py-2 text-light dark:text-dark"
                     type="number"
-                    placeholder="Amount"
+                    placeholder="None"
                 />
                 <button type="submit" className="bg-debit rounded font-bold text-white py-3 px-6 w-fit">
                     Create Transaction

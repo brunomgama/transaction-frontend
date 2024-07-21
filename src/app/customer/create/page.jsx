@@ -33,19 +33,23 @@ const CustomerForm = () => {
             <form
                 onSubmit={handleSubmit}
                 className="flex flex-col gap-3 w-full mx-auto p-6 bg-gray-700 bg-opacity-50 rounded-lg">
+                <label htmlFor="email" className="block mt-2 text-sm font-medium text-light dark:text-dark">Customer
+                    Name</label>
                 <input
                     onChange={(e) => setName(e.target.value)}
                     value={name}
                     className="border border-slate-500 px-8 py-2 text-light dark:text-dark"
                     type="text"
-                    placeholder="Customer Name"
+                    placeholder="None"
                 />
+                <label htmlFor="email" className="block mt-2 text-sm font-medium text-light dark:text-dark">Customer
+                    Surname</label>
                 <input
                     onChange={(e) => setSurname(e.target.value)}
                     value={surname}
                     className="border border-slate-500 px-8 py-2 text-light dark:text-dark"
                     type="text"
-                    placeholder="Customer Surname"
+                    placeholder="None"
                 />
                 <button type="submit" className="bg-debit rounded font-bold text-white py-3 px-6 w-fit">
                     Create Customer
