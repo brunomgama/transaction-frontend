@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import useCustomer from "../../../libs/customer/useCustomer";
 import useAccountFilteredList from "../../../libs/account/useAccountFilterList";
 import useTransactionFilteredList from "../../../libs/transaction/useTransactionFilterList";
+import {useRouter} from "next/navigation";
+
 
 const OverviewForm = ({ params }) => {
     const [name, setName] = useState("");
@@ -11,6 +13,7 @@ const OverviewForm = ({ params }) => {
     const [accountId, setAccountId] = useState(0);
 
     const paramId = params.id;
+    const router = useRouter();
 
     const { data, isLoading: isLoadingCustomer, isSuccess } = useCustomer(paramId);
     const { data: accountList } = useAccountFilteredList(paramId);
@@ -27,6 +30,10 @@ const OverviewForm = ({ params }) => {
         setAccountId(accId);
     };
 
+    const sendHome = async (e) => {
+        router.push("/")
+    }
+
     return (
         <>
             {isLoadingCustomer ? (
@@ -41,8 +48,10 @@ const OverviewForm = ({ params }) => {
             ) : (
                 <div className="flex flex-col">
                     <div className="w-full flex items-center justify-center mb-4">
-                        <form className="flex flex-col gap-3 w-full mx-auto p-6 bg-over-light dark:bg-over-dark bg-opacity-50 rounded-lg">
-                            <label htmlFor="customerName" className="block mt-2 text-sm font-medium text-light dark:text-dark">
+                        <form
+                            className="flex flex-col gap-3 w-full mx-auto p-6 bg-over-light dark:bg-over-dark bg-opacity-50 rounded-lg">
+                            <label htmlFor="customerName"
+                                   className="block mt-2 text-sm font-medium text-light dark:text-dark">
                                 Customer Name
                             </label>
                             <input
@@ -51,7 +60,8 @@ const OverviewForm = ({ params }) => {
                                 type="text"
                                 readOnly
                             />
-                            <label htmlFor="customerSurname" className="block mt-2 text-sm font-medium text-light dark:text-dark">
+                            <label htmlFor="customerSurname"
+                                   className="block mt-2 text-sm font-medium text-light dark:text-dark">
                                 Customer Surname
                             </label>
                             <input
@@ -154,6 +164,9 @@ const OverviewForm = ({ params }) => {
                     </div>
                 </div>
             )}
+            <button onClick={sendHome} type="submit" className="bg-selected-light dark:bg-selected-dark rounded font-bold text-white py-3 px-6 mt-6 w-fit">
+                    Home
+            </button>
         </>
     );
 };
