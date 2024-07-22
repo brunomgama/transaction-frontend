@@ -26,6 +26,7 @@ git clone https://github.com/brunomgama/transaction-capgemini
 Navigate to the frontend directory and start the development server:
 ```sh
 cd transaction-frontend
+npm install
 npm run dev
 ```
 
@@ -34,6 +35,7 @@ npm run dev
 Navigate to the backend directory and start the development server:
 ```sh
 cd transaction-capgemini
+mvn clean install
 mvn compile quarkus:dev
 ```
 
