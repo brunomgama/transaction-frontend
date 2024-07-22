@@ -63,7 +63,7 @@ const OverviewForm = ({ params }) => {
                         </form>
                     </div>
                     <div className="flex flex-col md:flex-row">
-                        <div className="flex-1">
+                        <div className="w-full">
                             {accountList?.length > 0 ? (
                                 accountList.map((t) => (
                                     <div key={t.accountId} className="px-6 py-3 text-left">
@@ -95,7 +95,7 @@ const OverviewForm = ({ params }) => {
                                 </div>
                             )}
                         </div>
-                        <div className="flex-1">
+                        <div className="w-full">
                             {accountId !== 0 ? (
                                 <div>
                                     {isLoadingTransactions ? (
@@ -111,14 +111,24 @@ const OverviewForm = ({ params }) => {
                                             {transactionFilteredList?.length > 0 ? (
                                                 transactionFilteredList.map((transaction) => (
                                                     <div key={transaction.id} className="px-6 py-3 text-left">
-                                                        <div className="flex overflow-x-auto">
-                                                            <div className="flex-none cursor-pointer flex flex-col items-start justify-center m-4 rounded-xl p-4
+                                                        <div className="flex-none cursor-pointer flex flex-col items-start justify-center m-4 rounded-xl p-4
                                                             bg-over-light dark:bg-over-dark
                                                             hover:bg-selected-light dark:hover:bg-selected-dark
                                                             transition duration-300">
-                                                                <div className="flex flex-col items-start">
-                                                                    <span className="text-light dark:text-dark">Transaction ID: {transaction.id}</span>
-                                                                    <span className="text-light dark:text-dark">Amount: {transaction.amount} €</span>
+                                                            <div className="text-left">
+                                                                <div
+                                                                    className="font-medium text-2xl text-light dark:text-dark">
+                                                                    Transaction ID:
+                                                                </div>
+                                                                <div className="text-light dark:text-dark">
+                                                                    {transaction.id}
+                                                                </div>
+                                                                <div
+                                                                    className="font-medium text-2xl text-light dark:text-dark mt-4">
+                                                                    Amount:
+                                                                </div>
+                                                                <div className="text-light dark:text-dark">
+                                                                    {transaction.amount} €
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -126,7 +136,9 @@ const OverviewForm = ({ params }) => {
                                                 ))
                                             ) : (
                                                 <div className="flex-1 flex flex-col items-center justify-center mt-6">
-                                                    <div className="text-light dark:text-dark">No transactions available for this account.</div>
+                                                    <div className="text-light dark:text-dark">No transactions available
+                                                        for this account.
+                                                    </div>
                                                 </div>
                                             )}
                                         </div>
@@ -134,7 +146,8 @@ const OverviewForm = ({ params }) => {
                                 </div>
                             ) : (
                                 <div className="flex-1 flex flex-col items-center justify-center mt-6">
-                                    <div className="text-light dark:text-dark">Select an account to view transactions.</div>
+                                    <div className="text-light dark:text-dark">Select an account to view transactions.
+                                    </div>
                                 </div>
                             )}
                         </div>
