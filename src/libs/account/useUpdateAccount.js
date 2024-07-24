@@ -3,9 +3,9 @@ import axios from "axios";
 
 export default function useUpdateAccount() {
     return useMutation({
-        mutationFn: ({id, customerId, balance}) => {
+        mutationFn: ({id, bankName, iban, balance, customerId, iconPath}) => {
             return axios.put(`/api/account/${id}`, {
-                customerId, balance
+                bankName, iban, balance, customerId, iconPath
             });
         }
     })

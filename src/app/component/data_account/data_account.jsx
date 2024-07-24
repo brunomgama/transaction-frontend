@@ -68,28 +68,37 @@ const DataAccount = ({ list }) => {
                                 </div>
                             </th>
                             <td className="px-6 py-4 text-left">
-                                {t.customerId}
+                                {t.bankName}
+                            </td>
+                            <td className="px-6 py-4 text-left">
+                                {t.iban}
                             </td>
                             <td className="px-6 py-4 text-left">
                                 {t.balance} €
+                            </td>
+                            <td className="px-6 py-4 text-left">
+                                {t.customerId}
+                            </td>
+                            <td className="px-6 py-4 text-left">
+                                {t.iconPath}
                             </td>
                             <td className="py-4 text-left">
                                 <div className="flex">
                                     <button
                                         className="p-2 rounded mx-4 bg-over-light dark:bg-over-dark text-light dark:text-dark hover:bg-selected-light dark:hover:bg-selected-dark"
-                                    onClick={() => handleEditClick(t.accountId)}>
-                                    <TbEdit className="text-xl"/>
-                                </button>
-                                <button
-                                    className="p-2 rounded bg-over-light dark:bg-over-dark text-light dark:text-dark hover:bg-selected-light dark:hover:bg-selected-dark"
-                                    onClick={() => handleDeleteClick(t.accountId)}>
-                                    <TbCreditCardOff className="text-xl"/>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                ))}
-                </tbody>
+                                        onClick={() => handleEditClick(t.accountId)}>
+                                        <TbEdit className="text-xl"/>
+                                    </button>
+                                    <button
+                                        className="p-2 rounded bg-over-light dark:bg-over-dark text-light dark:text-dark hover:bg-selected-light dark:hover:bg-selected-dark"
+                                        onClick={() => handleDeleteClick(t.accountId)}>
+                                        <TbCreditCardOff className="text-xl"/>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    ))}
+                    </tbody>
                 </table>
             )}
         </div>

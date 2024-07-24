@@ -5,10 +5,19 @@ const columns = [
         label: "Account Id",
     },
     {
-        label: "Customer Id",
+        label: "Bank",
+    },
+    {
+        label: "IBAN",
     },
     {
         label: "Balance",
+    },
+    {
+        label: "Customer Id",
+    },
+    {
+        label: "Icon",
     },
     {
         label: "Actions",

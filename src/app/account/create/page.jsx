@@ -7,7 +7,10 @@ import useCustomerList from "../../../libs/customer/useCustomerList";
 
 const AccountForm = () => {
     const [customerId, setCustomerId] = useState(0);
+    const [bankName, setBankName] = useState("");
+    const [iban, setIban] = useState("");
     const [balance, setBalance] = useState(0);
+    const [iconPath, setIconPath] = useState("");
 
     const create = useCreateAccount();
     const router = useRouter();
@@ -35,7 +38,7 @@ const AccountForm = () => {
             return;
         }
 
-        create.mutate({ customerId, balance });
+        create.mutate({bankName, iban, balance, customerId, iconPath});
     };
 
     return (
@@ -54,7 +57,28 @@ const AccountForm = () => {
                         </option>
                     ))}
                 </select>
-                    <label htmlFor="email"
+                <label htmlFor="email" className="block mt-2 text-sm font-medium text-light dark:text-dark">Bank
+                    Name</label>
+                <div className="relative w-full">
+                    <input
+                        onChange={(e) => setBankName(e.target.value)}
+                        value={bankName}
+                        className="border border-slate-500 px-8 py-2 text-light dark:text-dark w-full"
+                        type="text"
+                        placeholder="None"
+                    />
+                </div>
+                <label htmlFor="email" className="block mt-2 text-sm font-medium text-light dark:text-dark">IBAN</label>
+                <div className="relative w-full">
+                    <input
+                        onChange={(e) => setIban(e.target.value)}
+                        value={iban}
+                        className="border border-slate-500 px-8 py-2 text-light dark:text-dark w-full"
+                        type="text"
+                        placeholder="None"
+                    />
+                </div>
+                <label htmlFor="email"
                        className="block mt-2 text-sm font-medium text-light dark:text-dark">Balance</label>
                 <div className="relative w-full">
                     <div className="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
@@ -69,6 +93,16 @@ const AccountForm = () => {
                         value={balance}
                         className="border border-slate-500 px-8 py-2 text-light dark:text-dark w-full"
                         type="number"
+                        placeholder="None"
+                    />
+                </div>
+                <label htmlFor="email" className="block mt-2 text-sm font-medium text-light dark:text-dark">Icon Path</label>
+                <div className="relative w-full">
+                    <input
+                        onChange={(e) => setIconPath(e.target.value)}
+                        value={iconPath}
+                        className="border border-slate-500 px-8 py-2 text-light dark:text-dark w-full"
+                        type="text"
                         placeholder="None"
                     />
                 </div>

@@ -3,9 +3,9 @@ import axios from "axios";
 
 export default function useCreateAccount() {
     return useMutation({
-        mutationFn: ({customerId, balance}) => {
+        mutationFn: ({bankName, iban, balance, customerId, iconPath}) => {
             return axios.post('/api/account', {
-                customerId, balance
+                bankName, iban, balance, customerId, iconPath
             });
         }
     })

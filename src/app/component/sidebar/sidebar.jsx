@@ -4,7 +4,7 @@ import {usePathname} from "next/navigation";
 import {useTheme} from "next-themes";
 import Link from "next/link";
 import { List, ListItem, ListItemText, MenuItem } from "@mui/material";
-import { TbGlobe, TbHome, TbTransfer, TbAccessible, TbWallet } from "react-icons/tb";
+import { TbTransactionEuro, TbGlobe, TbHome, TbTransfer, TbAccessible, TbWallet } from "react-icons/tb";
 import ThemeSwitch from "@/app/ThemeSwitch";
 import React from "react";
 
@@ -31,6 +31,13 @@ const Sidebar = () => {
                         className={`${pathname === '/' ? 'bg-selected-light dark:bg-selected-dark' : ''} m-4 my-2 py-2 rounded-xl flex justify-between`}>
                         {resolvedTheme === 'light' ? (<TbHome style={{color: "black"}}  />) : (<TbHome/>)}
                         <ListItemText primary="Home" className="ml-2 text-light dark:text-dark" />
+                    </MenuItem>
+                    <MenuItem
+                        component={Link}
+                        href="/actions"
+                        className={`${pathname === '/actions' ? 'bg-selected-light dark:bg-selected-dark' : ''} m-4 my-2 py-2 rounded-xl flex justify-between`}>
+                        {resolvedTheme === 'light' ? (<TbTransactionEuro style={{color: "black"}}  />) : (<TbTransactionEuro/>)}
+                        <ListItemText primary="Actions" className="ml-2 text-light dark:text-dark" />
                     </MenuItem>
                     <MenuItem
                         component={Link}

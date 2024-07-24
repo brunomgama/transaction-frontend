@@ -68,7 +68,19 @@ const DataTransaction = ({ list }) => {
                                 </div>
                             </th>
                             <td className="px-6 py-4 text-left">
+                                {t.destination}
+                            </td>
+                            <td className="px-6 py-4 text-left">
                                 {t.accountId}
+                            </td>
+                            <td className="px-6 py-4 text-left">
+                                {t.transactionType}
+                            </td>
+                            <td className="px-6 py-4 text-left">
+                                {t.transactionCategory}
+                            </td>
+                            <td className="px-6 py-4 text-left">
+                                {t.state ? 'True' : 'False'}
                             </td>
                             <td className="px-6 py-4 text-left">
                                     <span
@@ -78,6 +90,9 @@ const DataTransaction = ({ list }) => {
                             </td>
                             <td className="px-6 py-4 text-left">
                                 {t.isDebit ? '-' : '+'} {t.amount} €
+                            </td>
+                            <td className="px-6 py-4 text-left">
+                                {t.repetition ? 'True' : 'False'}
                             </td>
                             <td className="py-4 text-left">
                                 <div className="flex">
