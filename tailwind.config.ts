@@ -24,6 +24,9 @@ const config: Config = {
 
         'credit': '#508D4E',
         'debit': '#E76F51',
+
+        'paid': '#508D4E',
+        'pending': '#E76F51',
       },
       textColor: {
         'light': '#222831',

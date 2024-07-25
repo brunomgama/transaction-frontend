@@ -2,7 +2,7 @@ import DataCustomer from "../component/data_customer/data_customer"
 
 const columns = [
     {
-        label: "ID",
+        label: "Profile",
     },
     {
         label: "Name",

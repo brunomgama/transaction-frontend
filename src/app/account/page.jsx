@@ -2,7 +2,7 @@ import DataAccount from "../component/data_account/data_account";
 
 const columns = [
     {
-        label: "Account Id",
+        label: "Logo",
     },
     {
         label: "Bank",
@@ -15,9 +15,6 @@ const columns = [
     },
     {
         label: "Customer Id",
-    },
-    {
-        label: "Icon",
     },
     {
         label: "Actions",

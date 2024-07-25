@@ -96,16 +96,20 @@ const AccountForm = () => {
                         placeholder="None"
                     />
                 </div>
-                <label htmlFor="email" className="block mt-2 text-sm font-medium text-light dark:text-dark">Icon Path</label>
-                <div className="relative w-full">
-                    <input
-                        onChange={(e) => setIconPath(e.target.value)}
-                        value={iconPath}
-                        className="border border-slate-500 px-8 py-2 text-light dark:text-dark w-full"
-                        type="text"
-                        placeholder="None"
-                    />
-                </div>
+                <label htmlFor="email" className="block mt-2 text-sm font-medium text-light dark:text-dark">Icon
+                    Path</label>
+                <select className="border border-slate-500 px-8 py-2 text-light dark:text-dark w-full"
+                    name="iconPath"
+                    value={iconPath}
+                    onChange={(e) => setIconPath(e.target.value)}
+                >
+                    <option value="/resources/bank/bankinter.png">Bankinter</option>
+                    <option value="/resources/bank/cgd.png">CGD</option>
+                    <option value="/resources/bank/ctt.png">CTT</option>
+                    <option value="/resources/bank/revolut.png">Revolut</option>
+                </select>
+
+
                 <button type="submit"
                         className="bg-selected-light dark:bg-selected-dark rounded font-bold text-white py-3 px-6 w-fit">
                     Create Account
