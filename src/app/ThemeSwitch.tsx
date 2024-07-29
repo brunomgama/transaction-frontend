@@ -1,8 +1,8 @@
 'use client'
 
 import { TbSunHigh, TbMoon } from "react-icons/tb";
-import {useEffect, useState} from "react";
-import {useTheme} from "next-themes";
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 export default function ThemeSwitch() {
     const [mounted, setMounted] = useState(false)

@@ -6,6 +6,8 @@ import useDeleteTransaction from "../../../libs/transaction/useDeleteTransaction
 import useTransactionList from "../../../libs/transaction/useTransactionList";
 import Loading from "../loading/loading";
 
+//TODO:GET THE TRANSACTION AND THE CATEGORY FROM THE LIST
+
 const DataTransaction = ({ list }) => {
     const router = useRouter();
     const deleteTransaction = useDeleteTransaction();

@@ -9,6 +9,7 @@ import Loading from "../../component/loading/loading";
 const CustomerForm = ({ params }) => {
     const [name, setName] = useState("");
     const [surname, setSurname] = useState("");
+
     const update = useUpdateCustomer();
     const router = useRouter();
     const paramId = params.id;
@@ -41,6 +42,11 @@ const CustomerForm = ({ params }) => {
         update.mutate({ id: paramId, name, surname })
     };
 
+    const goBack = () => {
+        router.push(`/customer`);
+        router.refresh();
+    }
+
     return (
         <>
             {isLoading ? (
@@ -68,9 +74,17 @@ const CustomerForm = ({ params }) => {
                                     type="text"
                                     id="surname"
                                 />
-                                <button type="submit" className="bg-selected-light dark:bg-selected-dark rounded font-bold text-white py-3 px-6 w-fit">
-                                    Edit Customer
-                                </button>
+                                <div className="flex justify-between">
+                                    <button type="submit"
+                                            className="bg-selected-light dark:bg-selected-dark rounded font-bold text-white py-3 px-6 w-fit">
+                                        Edit Customer
+                                    </button>
+
+                                    <button onClick={goBack} type="button"
+                                            className="bg-selected-light dark:bg-selected-dark rounded font-bold text-white py-3 px-6 w-fit">
+                                        Cancel Edit
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     ) : (

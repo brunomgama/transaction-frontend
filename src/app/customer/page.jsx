@@ -1,19 +1,5 @@
 import DataCustomer from "../component/data_customer/data_customer"
-
-const columns = [
-    {
-        label: "Profile",
-    },
-    {
-        label: "Name",
-    },
-    {
-        label: "Surname",
-    },
-    {
-        label: "Actions",
-    },
-];
+import columns from "../../enums/customer/columns";
 
 const Customer = async () => {
     return (

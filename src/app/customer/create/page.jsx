@@ -28,6 +28,11 @@ const CustomerForm = () => {
         create.mutate({name, surname});
     };
 
+    const goBack = () => {
+        router.push(`/customer`);
+        router.refresh();
+    }
+
     return (
         <div className="flex items-center justify-center">
             <form
@@ -51,9 +56,17 @@ const CustomerForm = () => {
                     type="text"
                     placeholder="None"
                 />
-                <button type="submit" className="bg-selected-light dark:bg-selected-dark rounded font-bold text-white py-3 px-6 w-fit">
-                    Create Customer
-                </button>
+                <div className="flex justify-between">
+                    <button type="submit"
+                            className="bg-selected-light dark:bg-selected-dark rounded font-bold text-white py-3 px-6 w-fit">
+                        Create Customer
+                    </button>
+
+                    <button onClick={goBack} type="button"
+                            className="bg-selected-light dark:bg-selected-dark rounded font-bold text-white py-3 px-6 w-fit">
+                        Cancel Creation
+                    </button>
+                </div>
             </form>
         </div>
     );

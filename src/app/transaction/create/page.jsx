@@ -5,6 +5,11 @@ import { useRouter } from "next/navigation";
 import useCreateTransaction from "../../../libs/transaction/useCreateTransaction";
 import useCustomerList from "../../../libs/customer/useCustomerList";
 import useAccountFilteredList from "../../../libs/account/useAccountFilterList";
+import transaction_types from "../../../enums/transaction/types"
+import category from "../../../enums/transaction/category"
+
+//TODO: CASH OR CARD USE BUTTONS WITH ONE ALWAYS SELECTED
+//TODO: DEBIT OR CREDIT USE BUTTONS WITH ONE ALWAYS SELECTED
 
 const TransactionForm = () => {
     const [destination, setDestination] = useState("");
@@ -32,6 +37,11 @@ const TransactionForm = () => {
         }
     }, [create.status, router]);
 
+    const goBack = () => {
+        router.push(`/transaction`);
+        router.refresh();
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -48,7 +58,7 @@ const TransactionForm = () => {
             <form
                 onSubmit={handleSubmit}
                 className="flex flex-col gap-3 w-full mx-auto p-6 bg-gray-700 bg-opacity-50 rounded-lg">
-                <label htmlFor="amount"
+                <label htmlFor="destination"
                        className="block mb-2 text-sm font-medium text-light dark:text-dark">Destination</label>
                 <div className="relative w-full">
                     <input
@@ -89,29 +99,41 @@ const TransactionForm = () => {
                         </option>
                     ))}
                 </select>
-                <label htmlFor="amount"
+                <label htmlFor="transactionType"
                        className="block mb-2 text-sm font-medium text-light dark:text-dark">Type</label>
-                <div className="relative w-full">
-                    <input
-                        onChange={(e) => setTransactionType(e.target.value)}
-                        value={transaction_type}
-                        className="border border-slate-500 px-8 py-2 text-light dark:text-dark w-full"
-                        type="number"
-                        placeholder="None"
-                    />
-                </div>
-                <label htmlFor="amount"
+                <select
+                    id="transactionType"
+                    className="border border-slate-500 px-8 py-2 text-light dark:text-dark"
+                    value={transaction_type}
+                    onChange={(e) => setTransactionType(Number(e.target.value))}
+                >
+                    <option value={0} disabled>Select Type</option>
+                    {transaction_types.map((type) => (
+                        <option key={type.value} value={type.value}>
+                            {type.label}
+                        </option>
+                    ))}
+                </select>
+
+
+                <label htmlFor="transactionCategory"
                        className="block mb-2 text-sm font-medium text-light dark:text-dark">Category</label>
-                <div className="relative w-full">
-                    <input
-                        onChange={(e) => setTransactionCategory(e.target.value)}
-                        value={transaction_category}
-                        className="border border-slate-500 px-8 py-2 text-light dark:text-dark w-full"
-                        type="number"
-                        placeholder="None"
-                    />
-                </div>
-                <label htmlFor="type" className="block mb-2 text-sm font-medium text-light dark:text-dark">In/Out</label>
+                <select
+                    id="transactionCategory"
+                    className="border border-slate-500 px-8 py-2 text-light dark:text-dark"
+                    value={transaction_category}
+                    onChange={(e) => setTransactionCategory(Number(e.target.value))}
+                >
+                    <option value={0} disabled>Select Category</option>
+                    {category.map((cat) => (
+                        <option key={cat.value} value={cat.value}>
+                            {cat.label}
+                        </option>
+                    ))}
+                </select>
+
+                <label htmlFor="type"
+                       className="block mb-2 text-sm font-medium text-light dark:text-dark">In/Out</label>
                 <select
                     id="type"
                     onChange={(e) => setDebit(e.target.value === 'true')}
@@ -124,7 +146,7 @@ const TransactionForm = () => {
                 <label htmlFor="amount"
                        className="block mb-2 text-sm font-medium text-light dark:text-dark">Amount</label>
                 <div className="relative w-full">
-                <div className="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
+                    <div className="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
                         <svg className="w-4 h-4 text-light dark:text-dark" aria-hidden="true"
                              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                             <path stroke="currentColor"
@@ -132,7 +154,7 @@ const TransactionForm = () => {
                         </svg>
                     </div>
                     <input
-                        onChange={(e) => setAmount(e.target.value)}
+                        onChange={(e) => setAmount(Number(e.target.value))}
                         value={amount}
                         className="border border-slate-500 px-8 py-2 text-light dark:text-dark w-full"
                         type="number"
@@ -153,10 +175,18 @@ const TransactionForm = () => {
                     <label htmlFor="bordered-checkbox-1"
                            className="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Repetition</label>
                 </div>
-                <button type="submit"
-                        className="bg-selected-light dark:bg-selected-dark rounded font-bold text-white py-3 px-6 w-fit">
-                    Create Transaction
-                </button>
+
+                <div className="flex justify-between">
+                    <button type="submit"
+                            className="bg-selected-light dark:bg-selected-dark rounded font-bold text-white py-3 px-6 w-fit">
+                        Create Transaction
+                    </button>
+
+                    <button onClick={goBack} type="button"
+                            className="bg-selected-light dark:bg-selected-dark rounded font-bold text-white py-3 px-6 w-fit">
+                        Cancel Transaction
+                    </button>
+                </div>
             </form>
         </div>
     );

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import useCreateAccount from "../../../libs/account/useCreateAccount";
 import useCustomerList from "../../../libs/customer/useCustomerList";
+import SelectCustomer from "../../component/select_customer/select_customer";
 
 const AccountForm = () => {
     const [customerId, setCustomerId] = useState(0);

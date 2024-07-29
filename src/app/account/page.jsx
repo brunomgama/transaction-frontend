@@ -1,25 +1,5 @@
 import DataAccount from "../component/data_account/data_account";
-
-const columns = [
-    {
-        label: "Logo",
-    },
-    {
-        label: "Bank",
-    },
-    {
-        label: "IBAN",
-    },
-    {
-        label: "Balance",
-    },
-    {
-        label: "Customer Id",
-    },
-    {
-        label: "Actions",
-    },
-];
+import columns from "../../enums/account/columns";
 
 const Account = async () => {
     return (

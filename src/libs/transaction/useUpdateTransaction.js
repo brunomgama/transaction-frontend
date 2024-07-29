@@ -3,9 +3,9 @@ import axios from "axios";
 
 export default function useUpdateTransaction() {
     return useMutation({
-        mutationFn: ({id, accountId, isDebit, amount}) => {
+        mutationFn: ({id, destination, accountId, transaction_type, transaction_category, state, isDebit, amount, repetition}) => {
             return axios.put(`/api/transaction/${id}`, {
-                accountId, isDebit, amount
+                destination, accountId, transactionType: transaction_type, transactionCategory: transaction_category, state, isDebit, amount, repetition
             });
         }
     })
