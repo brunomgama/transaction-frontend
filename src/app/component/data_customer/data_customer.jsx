@@ -38,7 +38,7 @@ const DataCustomer = ({ list }) => {
                     <TbSquarePlus className="text-xl ml-2" />
                 </button>
             </div>
-            {isLoading? (
+            {isLoading ? (
                 <Loading />
             ) : (
                 <table className="w-full text-sm text-light dark:text-dark">
@@ -55,9 +55,16 @@ const DataCustomer = ({ list }) => {
                     {data.map((t) => (
                         <tr key={t.id}
                             className="bg-over-light dark:bg-over-dark text-light dark:text-dark hover:bg-selected-light dark:hover:bg-selected-dark">
-                            <th scope="row" className="px-6">
-                                <img className="w-10 h-10 rounded-xl" src="/resources/customer/profile.png" alt="Default avatar"/>
-                            </th>
+                            {t.name === 'Bruno' ? (
+                                <th scope="row" className="px-6">
+                                    <img className="w-10 h-10 rounded-xl" src="/resources/customer/profile.png" alt="Default avatar"/>
+                                </th>
+                            ) : (
+                                <th scope="row" className="px-6">
+                                    <img className="w-10 h-10 rounded-xl" src="/resources/customer/avatar.png"
+                                         alt="Default avatar"/>
+                                </th>
+                            )}
                             <td className="px-6 py-4 text-left">
                                 {t.name}
                             </td>

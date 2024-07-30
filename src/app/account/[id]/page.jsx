@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import useUpdateAccount from "../../../libs/account/useUpdateAccount";
 import useAccount from "../../../libs/account/useAccount";
 import Loading from "../../component/loading/loading";
+import bank from "../../../enums/bank/bank";
 
 const AccountForm = ({ params }) => {
     const [customerId, setCustomerId] = useState(0);
@@ -126,10 +127,11 @@ const AccountForm = ({ params }) => {
                                     value={iconPath}
                                     onChange={(e) => setIconPath(e.target.value)}
                             >
-                                <option value="/resources/bank/bankinter.png">Bankinter</option>
-                                <option value="/resources/bank/cgd.png">CGD</option>
-                                <option value="/resources/bank/ctt.png">CTT</option>
-                                <option value="/resources/bank/revolut.png">Revolut</option>
+                                {bank.map((bankInfo) => (
+                                    <option key={bankInfo.value} value={bankInfo.value}>
+                                        {bankInfo.label}
+                                    </option>
+                                ))}
                             </select>
                             <button type="submit"
                                     className="bg-selected-light dark:bg-selected-dark rounded font-bold text-white py-3 px-6 w-fit">

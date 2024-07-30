@@ -109,7 +109,7 @@ const TransactionForm = ({ params }) => {
                                     <option value={0} disabled>Select Customer ID</option>
                                     {customers?.map((customer) => (
                                         <option key={customer.id} value={customer.id}>
-                                            {customer.id} - {customer.name} {customer.surname}
+                                            {customer.name} {customer.surname}
                                         </option>
                                     ))}
                                 </select>

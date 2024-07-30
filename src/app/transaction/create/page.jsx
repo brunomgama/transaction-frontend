@@ -9,6 +9,8 @@ import transaction_types from "../../../enums/transaction/types"
 import category from "../../../enums/transaction/category"
 
 //TODO: CASH OR CARD USE BUTTONS WITH ONE ALWAYS SELECTED
+//TODO: IN TYPE AND CATEGORY NEVER SHOW THE INITIALIZATION
+//TODO: DEBIT/CREDIT GIVE BETTER NAMES OR ADD ICONS
 //TODO: DEBIT OR CREDIT USE BUTTONS WITH ONE ALWAYS SELECTED
 
 const TransactionForm = () => {

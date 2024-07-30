@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import useCreateCustomer from "../../../libs/customer/useCreateCustomer";
 
+//TODO: CHANGE THE BUTTONS TO BE MORE EASILY CLEAR
+
 const CustomerForm = () => {
     const [name, setName] = useState("");
     const [surname, setSurname] = useState("");
+
     const create = useCreateCustomer()
     const router = useRouter();
 

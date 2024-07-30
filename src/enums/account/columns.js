@@ -1,5 +1,5 @@
 const columns = [
-    {label: "Logo" },
+    { label: "Logo" },
     { label: "Bank" },
     { label: "IBAN" },
     { label: "Balance" },

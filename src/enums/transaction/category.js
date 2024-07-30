@@ -1,8 +1,29 @@
 const category = [
-    { label: "N/A", value: 0 },
-    { label: "Trip", value: 1 },
-    { label: "Shopping", value: 2 },
-    { label: "Grocery", value: 3 }
+    {value:"0", label: "Initialization" },
+    {value:"1", label: "Viagens" },
+    {value:"2", label: "Supermercado" },
+    {value:"3", label: "Gasolina" },
+    {value:"4", label: "Casa" },
+    {value:"5", label: "Eletricidade" },
+    {value:"6", label: "Água" },
+    {value:"7", label: "Gás" },
+    {value:"8", label: "Eletronica" },
+    {value:"9", label: "Restauração" },
+    {value:"10", label: "Cultura" },
+    {value:"11", label: "Cinema" },
+    {value:"12", label: "Teatro" },
+    {value:"13", label: "Livros" },
+    {value:"14", label: "Ginásio" },
+    {value:"15", label: "Roupa" },
+    {value:"16", label: "Alcool" },
+    {value:"17", label: "Cosmético" },
+    {value:"18", label: "Barbeiro" },
+    {value:"19", label: "Saude" },
+    {value:"20", label: "Médico" },
+    {value:"21", label: "Seguros" },
+    {value:"22", label: "Impostos" },
+    {value:"23", label: "Ordenado" },
+    {value:"24", label: "Prendas" },
 ];
 
 export default category;

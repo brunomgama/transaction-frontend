@@ -6,8 +6,6 @@ import useDeleteTransaction from "../../../libs/transaction/useDeleteTransaction
 import useTransactionList from "../../../libs/transaction/useTransactionList";
 import Loading from "../loading/loading";
 
-//TODO:GET THE TRANSACTION AND THE CATEGORY FROM THE LIST
-
 const DataTransaction = ({ list }) => {
     const router = useRouter();
     const deleteTransaction = useDeleteTransaction();
@@ -25,6 +23,8 @@ const DataTransaction = ({ list }) => {
     const handleDeleteClick = (id) => {
         deleteTransaction.mutate(id);
     };
+
+    console.log(data)
 
     return (
         <div className="relative overflow-x-auto">
@@ -65,10 +65,10 @@ const DataTransaction = ({ list }) => {
                                 {t.accountId}
                             </td>
                             <td className="px-6 py-4 text-left">
-                                {t.transactionType}
+                                {t.transactionTypeName}
                             </td>
                             <td className="px-6 py-4 text-left">
-                                {t.transactionCategory}
+                                {t.transactionCategoryName}
                             </td>
                             <td className="px-6 py-4 text-left">
                                 <span

@@ -34,7 +34,7 @@ const DataAccount = ({ list }) => {
                     <TbSquarePlus className="text-xl ml-2" />
                 </button>
             </div>
-            {isLoading?(
+            {isLoading ? (
                 <Loading />
             ) : (
                 <table className="w-full text-sm text-light dark:text-dark">
@@ -64,7 +64,7 @@ const DataAccount = ({ list }) => {
                                 {t.balance} €
                             </td>
                             <td className="px-6 py-4 text-left">
-                                {t.customerId}
+                                {t.customerName}
                             </td>
                             <td className="py-4 text-left">
                                 <div className="flex">
