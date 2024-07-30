@@ -97,7 +97,7 @@ const TransactionForm = () => {
                     <option value={0} disabled>Select Account ID</option>
                     {accounts?.map((acc) => (
                         <option key={acc.accountId} value={acc.accountId}>
-                            {acc.accountId}
+                            {acc.bankName}
                         </option>
                     ))}
                 </select>

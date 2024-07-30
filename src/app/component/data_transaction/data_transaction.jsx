@@ -24,8 +24,6 @@ const DataTransaction = ({ list }) => {
         deleteTransaction.mutate(id);
     };
 
-    console.log(data)
-
     return (
         <div className="relative overflow-x-auto">
             <div className="flex justify-end items-center mb-4">
