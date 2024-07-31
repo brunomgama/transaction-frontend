@@ -86,6 +86,9 @@ const DataTransaction = ({ list }) => {
                             <td className="px-6 py-4 text-left">
                                 {t.repetition ? 'True' : 'False'}
                             </td>
+                            <td className="px-6 py-4 text-left">
+                                {t.transactionDate}
+                            </td>
                             <td className="py-4 text-left">
                                 <div className="flex">
                                     <button

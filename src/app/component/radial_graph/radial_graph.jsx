@@ -1,30 +1,30 @@
 'use client';
 
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
 
 const data = [
     {
         name: '18-24',
-        uv: 31.47,
+        uv: 26.69,
         pv: 2400,
         fill: '#8884d8',
     },
     {
         name: '25-29',
         uv: 26.69,
-        pv: 4567,
+        pv: 2400,
         fill: '#83a6ed',
     },
     {
         name: '30-34',
-        uv: 15.69,
+        uv: 26.69,
         pv: 1398,
         fill: '#8dd1e1',
     },
     {
         name: '35-39',
-        uv: 8.22,
+        uv: 26.69,
         pv: 9800,
         fill: '#82ca9d',
     },
@@ -53,6 +53,7 @@ const style = {
     right: 0,
     transform: 'translate(0, -50%)',
     lineHeight: '24px',
+
 };
 
 const RadialGraph = () => {

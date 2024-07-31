@@ -32,10 +32,24 @@ const config: Config = {
         'light': '#222831',
         'dark': '#EEEEEE',
       },
+      borderColor: {
+        'light': '#222831',
+        'dark': '#EEEEEE',
+      },
+      ringColor: {
+        'selected-light': '#B4846C',
+        'selected-dark': '#F08A5D',
+      },
+      ringOffsetColor: {
+        'dark': '#222831',
+      },
+      ringWidth: {
+        DEFAULT: '2px',
+      },
     },
   },
-  plugins: [
-  ],
+  plugins: [],
   darkMode: 'class',
 };
+
 export default config;

@@ -9,7 +9,7 @@ const BankOverview = () => {
     const { data, isLoading } = useAccountList();
 
     return (
-        <div className="flex flex-wrap overflow-x-auto">
+        <div className="flex flex-wrap overflow-x-auto w-full">
             {isLoading ? (
                 <div className="w-full flex justify-center">
                     <Loading />

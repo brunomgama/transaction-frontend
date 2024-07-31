@@ -24,6 +24,7 @@ const category = [
     {value:"22", label: "Impostos" },
     {value:"23", label: "Ordenado" },
     {value:"24", label: "Prendas" },
+    {value:"25", label: "Transferencias" },
 ];
 
 export default category;

@@ -7,11 +7,9 @@ import useCustomerList from "../../../libs/customer/useCustomerList";
 import useAccountFilteredList from "../../../libs/account/useAccountFilterList";
 import transaction_types from "../../../enums/transaction/types"
 import category from "../../../enums/transaction/category"
-
-//TODO: CASH OR CARD USE BUTTONS WITH ONE ALWAYS SELECTED
-//TODO: IN TYPE AND CATEGORY NEVER SHOW THE INITIALIZATION
-//TODO: DEBIT/CREDIT GIVE BETTER NAMES OR ADD ICONS
-//TODO: DEBIT OR CREDIT USE BUTTONS WITH ONE ALWAYS SELECTED
+import in_out from "../../../enums/transaction/in_out";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const TransactionForm = () => {
     const [destination, setDestination] = useState("");
@@ -21,8 +19,9 @@ const TransactionForm = () => {
     const [state, setState] = useState(true);
     const [isDebit, setDebit] = useState(true);
     const [amount, setAmount] = useState(0);
-    const [repetition, setRepetition] = useState(true);
-    const [customerId, setCustomerId] = useState(0);
+    const [repetition, setRepetition] = useState(false);
+    const [customerId, setCustomerId] = useState(1);
+    const [incomingDate, setIncomingDate] = useState(null);
 
     const create = useCreateTransaction();
     const router = useRouter();
@@ -52,7 +51,7 @@ const TransactionForm = () => {
             return;
         }
 
-        create.mutate({ destination, accountId, transaction_type, transaction_category, state, isDebit, amount, repetition });
+        create.mutate({ destination, accountId, transaction_type, transaction_category, state, isDebit, amount, repetition, incomingDate });
     };
 
     return (
@@ -71,21 +70,7 @@ const TransactionForm = () => {
                         placeholder="None"
                     />
                 </div>
-                <label htmlFor="customerId" className="block mt-2 text-sm font-medium text-light dark:text-dark">Customer
-                    ID</label>
-                <select
-                    id="customerId"
-                    className="border border-slate-500 px-8 py-2 text-light dark:text-dark"
-                    value={customerId}
-                    onChange={(e) => setCustomerId(e.target.value)}
-                >
-                    <option value={0} disabled>Select Customer ID</option>
-                    {customers?.map((customer) => (
-                        <option key={customer.id} value={customer.id}>
-                            {customer.id} - {customer.name} {customer.surname}
-                        </option>
-                    ))}
-                </select>
+
                 <label htmlFor="accountId" className="block mt-2 text-sm font-medium text-light dark:text-dark">Account
                     ID</label>
                 <select
@@ -101,22 +86,20 @@ const TransactionForm = () => {
                         </option>
                     ))}
                 </select>
-                <label htmlFor="transactionType"
-                       className="block mb-2 text-sm font-medium text-light dark:text-dark">Type</label>
-                <select
-                    id="transactionType"
-                    className="border border-slate-500 px-8 py-2 text-light dark:text-dark"
-                    value={transaction_type}
-                    onChange={(e) => setTransactionType(Number(e.target.value))}
-                >
-                    <option value={0} disabled>Select Type</option>
-                    {transaction_types.map((type) => (
-                        <option key={type.value} value={type.value}>
-                            {type.label}
-                        </option>
-                    ))}
-                </select>
 
+                <label htmlFor="transactionType" className="block mb-2 text-sm font-medium text-light dark:text-dark">Type</label>
+                <div className="flex gap-4">
+                    {transaction_types.map((type) => (
+                        <div
+                            key={type.value}
+                            onClick={() => setTransactionType(type.value)}
+                            className={`cursor-pointer p-4 rounded-lg text-white ${transaction_type === type.value ? 'bg-selected-light dark:bg-selected-dark' : ''} 
+                            bg-light dark:bg-dark transition-all hover:opacity-80`}
+                        >
+                            {type.label}
+                        </div>
+                    ))}
+                </div>
 
                 <label htmlFor="transactionCategory"
                        className="block mb-2 text-sm font-medium text-light dark:text-dark">Category</label>
@@ -136,15 +119,19 @@ const TransactionForm = () => {
 
                 <label htmlFor="type"
                        className="block mb-2 text-sm font-medium text-light dark:text-dark">In/Out</label>
-                <select
-                    id="type"
-                    onChange={(e) => setDebit(e.target.value === 'true')}
-                    value={isDebit}
-                    className="border border-slate-500 px-8 py-2 text-light dark:text-dark"
-                >
-                    <option value="true">Debit</option>
-                    <option value="false">Credit</option>
-                </select>
+                <div className="flex gap-4">
+                    {in_out.map((option) => (
+                        <div
+                            key={option.value}
+                            onClick={() => setDebit(option.value)}
+                            className={`cursor-pointer p-4 rounded-lg text-white ${isDebit === option.value ? 'bg-selected-light dark:bg-selected-dark' : ''} 
+                            bg-light dark:bg-dark transition-all hover:opacity-80`}
+                        >
+                            {option.label}
+                        </div>
+                    ))}
+                </div>
+
                 <label htmlFor="amount"
                        className="block mb-2 text-sm font-medium text-light dark:text-dark">Amount</label>
                 <div className="relative w-full">
@@ -163,20 +150,63 @@ const TransactionForm = () => {
                         placeholder="None"
                     />
                 </div>
-                <div className="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
-                    <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox"
-                           checked={state}
-                           onChange={(e) => setState(e.target.checked)}
-                           className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-                    <label htmlFor="bordered-checkbox-1"
-                           className="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Paid</label>
-                    <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox"
-                           checked={repetition}
-                           onChange={(e) => setRepetition(e.target.checked)}
-                           className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-                    <label htmlFor="bordered-checkbox-1"
-                           className="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Repetition</label>
+
+                <div className="flex flex-col items-start ps-4 mt-2 mb-2">
+                    <label className="inline-flex items-center cursor-pointer mb-2">
+                        <input
+                            type="checkbox"
+                            value=""
+                            checked={state}
+                            onChange={(e) => setState(e.target.checked)}
+                            className="sr-only peer"
+                        />
+                        <div
+                            className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4
+                            peer-focus:ring-selected-light dark:peer-focus:ring-selected-dark rounded-full peer dark:bg-gray-700
+                            peer-checked:bg-selected-light dark:peer-checked:bg-selected-dark peer-checked:after:translate-x-full
+                            rtl:peer-checked:after:-translate-x-full
+                            peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px]
+                            after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full
+                            after:h-5 after:w-5 after:transition-all dark:border-gray-600"
+                        ></div>
+
+                        <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Paid</span>
+                    </label>
+
+                    <label className="inline-flex items-center cursor-pointer">
+                        <input
+                            type="checkbox"
+                            value=""
+                            checked={repetition}
+                            onChange={(e) => setRepetition(e.target.checked)}
+                            className="sr-only peer"
+                        />
+                        <div
+                            className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4
+                            peer-focus:ring-selected-light dark:peer-focus:ring-selected-dark rounded-full peer dark:bg-gray-700
+                            peer-checked:bg-selected-light dark:peer-checked:bg-selected-dark peer-checked:after:translate-x-full
+                            rtl:peer-checked:after:-translate-x-full
+                            peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px]
+                            after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full
+                            after:h-5 after:w-5 after:transition-all dark:border-gray-600"
+                        ></div>
+
+                        <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Repetition</span>
+                    </label>
                 </div>
+
+                {!state && (
+                    <div>
+                        <label htmlFor="repeatDate" className="block mb-2 text-sm font-medium text-light dark:text-dark">Date of transaction</label>
+                        <DatePicker
+                            id="repeatDate"
+                            selected={incomingDate}
+                            onChange={(date) => setIncomingDate(date)}
+                            className="border border-slate-500 px-8 py-2 text-light dark:text-dark w-full"
+                            placeholderText="Select date"
+                        />
+                    </div>
+                )}
 
                 <div className="flex justify-between">
                     <button type="submit"

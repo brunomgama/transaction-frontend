@@ -8,6 +8,7 @@ const columns = [
     { label: "In/Out" },
     { label: "Amount" },
     { label: "Repetition" },
+    { label: "Date" },
     { label: "Actions" }
 ];
 

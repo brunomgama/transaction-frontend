@@ -1,14 +1,14 @@
 'use client'
 
-import { TbSunHigh, TbMoon } from "react-icons/tb";
-import { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
+import { useEffect, useState } from 'react';
+import { TbSunHigh, TbMoon } from 'react-icons/tb'; // make sure to import the icons
+import { useTheme } from 'next-themes';
 
 export default function ThemeSwitch() {
-    const [mounted, setMounted] = useState(false)
-    const { setTheme, resolvedTheme } = useTheme()
+    const [mounted, setMounted] = useState(false);
+    const { setTheme, resolvedTheme } = useTheme();
 
-    useEffect(() => setMounted(true), [])
+    useEffect(() => setMounted(true), []);
 
     if(!mounted) {
         return (
@@ -18,10 +18,10 @@ export default function ThemeSwitch() {
     }
 
     if (resolvedTheme === 'dark') {
-        return < TbSunHigh onClick={() => setTheme('light')}/>
+        return <TbSunHigh className="h-6 w-6 mt-2 cursor-pointer" onClick={() => setTheme('light')} />;
     }
 
     if (resolvedTheme === 'light') {
-        return < TbMoon style={{color: "black"}} onClick={() => setTheme('dark')}/>
+        return <TbMoon className={`h-6 w-6 mt-2 cursor-pointer text-black`} onClick={() => setTheme('dark')} />;
     }
 }
