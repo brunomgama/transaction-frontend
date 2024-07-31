@@ -46,6 +46,42 @@ const data = [
         pv: 4300,
         amt: 2100,
     },
+    {
+        name: 'Page G',
+        uv: 3490,
+        pv: 4300,
+        amt: 2100,
+    },
+    {
+        name: 'Page G',
+        uv: 3490,
+        pv: 4300,
+        amt: 2100,
+    },
+    {
+        name: 'Page G',
+        uv: 3490,
+        pv: 4300,
+        amt: 2100,
+    },
+    {
+        name: 'Page G',
+        uv: 3490,
+        pv: 4300,
+        amt: 2100,
+    },
+    {
+        name: 'Page G',
+        uv: 3490,
+        pv: 4300,
+        amt: 2100,
+    },
+    {
+        name: 'Page G',
+        uv: 3490,
+        pv: 4300,
+        amt: 2100,
+    },
 ];
 
 const BarGraph = () => {

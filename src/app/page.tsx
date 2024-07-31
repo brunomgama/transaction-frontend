@@ -7,6 +7,8 @@ import BarGraph from "@/app/component/bar_graph/bar_graph";
 import {TbSquarePlus} from "react-icons/tb";
 import {useRouter} from "next/navigation";
 import ThemeSwitch from "@/app/ThemeSwitch";
+import FutureOverview from "@/app/component/future_transaction/future_transaction";
+import columns from "@/enums/transaction/columns"
 
 export default function Home() {
     const router = useRouter();
@@ -17,7 +19,8 @@ export default function Home() {
 
     return (
         <div className="flex flex-col space-y-4 w-full">
-            <div className="flex justify-between items-center mt-4 ml-4 border-b-2 pb-4 border-light/[.06] dark:border-dark/[.06] mr-4">
+            <div
+                className="flex justify-between items-center mt-4 ml-4 border-b-2 pb-4 border-light/[.06] dark:border-dark/[.06] mr-4">
                 <span className="font-medium text-4xl text-light dark:text-dark">
                     Hello Bruno
                 </span>
@@ -36,7 +39,10 @@ export default function Home() {
                 <BankOverview/>
             </div>
             <div className="flex-grow">
-                <BarGraph />
+                <FutureOverview list={columns}/>
+            </div>
+            <div className="flex-grow mt-6">
+                <BarGraph/>
                 {/*<LineGraph />*/}
                 {/*<RadialGraph />*/}
             </div>
